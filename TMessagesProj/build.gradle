@@ -78,8 +78,7 @@ dependencies {
     }
 
     implementation 'androidx.browser:browser:1.10.0'
-    implementation 'app.nasgram.gifski:gifski:1.0.0'
-    implementation 'app.nasgram.translator:translator:1.6.0'
+
     implementation 'com.jaredrummler:truetypeparser-light:1.0.0'
     implementation 'com.squareup.okhttp3:okhttp:5.4.0'
     implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.1'
