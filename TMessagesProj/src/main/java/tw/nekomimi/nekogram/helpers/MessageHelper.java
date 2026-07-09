@@ -369,9 +369,18 @@ public class MessageHelper extends BaseController {
         if (path == null) return;
         Utilities.globalQueue.postRunnable(() -> {
             try {
-                if (video || animated) {
-                    StickerHelper.convertStickerFormat(path, animated, path1 -> Utilities.globalQueue.postRunnable(() ->
-                            MediaController.saveFile(path1, activity, 0, null, null, callback)));
+                if (video) {
+                    // Video stickers can be saved as-is (mp4/webp)
+                    MediaController.saveFile(path, activity, 0, null, null, callback);
+                } else if (animated) {
+                    // Animated sticker (Lottie/TGS) — GIF export not available in this build.
+                    // Notify the user and complete the callback with null so callers don't hang.
+                    AndroidUtilities.runOnUIThread(() ->
+                            NotificationCenter.getGlobalInstance().postNotificationName(
+                                    NotificationCenter.showBulletin,
+                                    Bulletin.TYPE_ERROR,
+                                    LocaleController.getString(R.string.SaveToGalleryFailed)));
+                    if (callback != null) callback.run(null);
                 } else {
                     var image = BitmapFactory.decodeFile(path);
                     if (image != null) {
