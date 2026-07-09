@@ -86,10 +86,7 @@ public class Translator {
             builder.setMessage(LocaleController.getString(R.string.TranslateApiUnsupported));
             builder.setPositiveButton(LocaleController.getString(R.string.TranslationProviderShort), (dialog, which) -> showTranslationProviderSelector(context, null, null, resourcesProvider));
         } else {
-            if (t instanceof Http429Exception) {
-                builder.setTitle(LocaleController.getString(R.string.TranslateFailed));
-                builder.setMessage(LocaleController.getString(R.string.FloodWait));
-            } else if (t != null && t.getLocalizedMessage() != null) {
+            if (t != null && t.getLocalizedMessage() != null) {
                 builder.setTitle(LocaleController.getString(R.string.TranslateFailed));
                 builder.setMessage(t.getLocalizedMessage());
             } else {
@@ -147,26 +144,8 @@ public class Translator {
     public static Pair<ArrayList<String>, ArrayList<String>> getProviders() {
         ArrayList<String> names = new ArrayList<>();
         ArrayList<String> types = new ArrayList<>();
-        names.add(LocaleController.getString(R.string.ProviderGoogleTranslate));
-        types.add(PROVIDER_GOOGLE);
-        names.add(LocaleController.getString(R.string.ProviderYandex));
-        types.add(PROVIDER_YANDEX);
-        names.add(LocaleController.getString(R.string.ProviderMicrosoftTranslator));
-        types.add(PROVIDER_MICROSOFT);
-        names.add(LocaleController.getString(R.string.ProviderDeepLTranslate));
-        types.add(PROVIDER_DEEPL);
         names.add("Telegram");
         types.add(PROVIDER_TELEGRAM);
-        names.add(LocaleController.getString(R.string.ProviderLingocloud));
-        types.add(PROVIDER_LINGO);
-        names.add(LocaleController.getString(R.string.ProviderYouDaoTranslate));
-        types.add(PROVIDER_YOUDAO);
-        names.add(LocaleController.getString(R.string.ProviderBaiduTranslate));
-        types.add(PROVIDER_BAIDU);
-        names.add(LocaleController.getString(R.string.ProviderSogouTranslate));
-        types.add(PROVIDER_SOGOU);
-        names.add(LocaleController.getString(R.string.ProviderTencentTranslator));
-        types.add(PROVIDER_TENCENT);
         return new Pair<>(names, types);
     }
 
@@ -240,8 +219,8 @@ public class Translator {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context, resourcesProvider)
                         .setMessage(LocaleController.getString(R.string.TranslateApiUnsupported));
                 if ("app".equals(NekoConfig.translationTarget)) {
-                    builder.setPositiveButton(LocaleController.getString(R.string.UseGoogleTranslate), (dialog, which) -> {
-                        NekoConfig.setTranslationProvider(PROVIDER_GOOGLE);
+                    builder.setPositiveButton("Telegram", (dialog, which) -> {
+                        NekoConfig.setTranslationProvider(PROVIDER_TELEGRAM);
                         if (callback != null) callback.run(true);
                     });
                     builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);

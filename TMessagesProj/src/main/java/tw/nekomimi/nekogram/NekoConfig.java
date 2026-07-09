@@ -79,7 +79,7 @@ public class NekoConfig {
     public static boolean autoTranslate = true;
     public static boolean showRPCError = false;
     public static float stickerSize = 14.0f;
-    public static String translationProvider = Translator.PROVIDER_GOOGLE;
+    public static String translationProvider = Translator.PROVIDER_TELEGRAM;
     public static String translationTarget = "app";
     public static int tabsTitleType = TITLE_TYPE_MIX;
     public static int idType = ID_TYPE_API;
@@ -184,7 +184,7 @@ public class NekoConfig {
             showTranslate = preferences.getBoolean("showTranslate", true);
             showRepeat = preferences.getBoolean("showRepeat", true);
             stickerSize = preferences.getFloat("stickerSize", 14.0f);
-            translationProvider = preferences.getString("translationProvider2", Translator.PROVIDER_GOOGLE);
+            translationProvider = Translator.PROVIDER_TELEGRAM;
             openArchiveOnPull = preferences.getBoolean("openArchiveOnPull", false);
             hideKeyboardOnChatScroll = preferences.getBoolean("hideKeyboardOnChatScroll", false);
             useSystemEmoji = preferences.getBoolean("useSystemEmoji", false);
