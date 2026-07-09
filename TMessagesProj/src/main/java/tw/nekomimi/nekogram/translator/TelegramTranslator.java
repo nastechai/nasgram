@@ -8,12 +8,10 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.TranslateAlert2;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
-import app.nasgram.translator.GoogleAppTranslator;
-
 public class TelegramTranslator implements Translator.ITranslator {
-
 
     private static final class InstanceHolder {
         private static final TelegramTranslator instance = new TelegramTranslator();
@@ -47,11 +45,11 @@ public class TelegramTranslator implements Translator.ITranslator {
 
     @Override
     public boolean supportLanguage(String language) {
-        return GoogleAppTranslator.getInstance().supportLanguage(language);
+        return true;
     }
 
     @Override
     public List<String> getTargetLanguages() {
-        return GoogleAppTranslator.getInstance().getTargetLanguages();
+        return Collections.emptyList();
     }
 }

@@ -39,7 +39,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-import app.nasgram.translator.Http429Exception;
 import tw.nekomimi.nasgram.NekoConfig;
 import tw.nekomimi.nasgram.helpers.PopupHelper;
 import tw.nekomimi.nasgram.settings.NekoLanguagesSelectActivity;

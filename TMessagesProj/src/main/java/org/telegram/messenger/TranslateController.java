@@ -52,7 +52,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
-import app.nasgram.translator.Http429Exception;
 import tw.nekomimi.nasgram.NekoConfig;
 import tw.nekomimi.nasgram.helpers.MessageHelper;
 import tw.nekomimi.nasgram.translator.Translator;
@@ -1013,7 +1012,7 @@ public class TranslateController extends BaseController {
                 @Override
                 public void onError(Throwable t) {
                     toggleTranslatingDialog(dialogId, false);
-                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_ERROR, getString(t instanceof Http429Exception ? R.string.TranslationFailedAlert1 : R.string.TranslationFailedAlert2));
+                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_ERROR, getString(R.string.TranslationFailedAlert2));
                 }
             });
             return;
@@ -1331,7 +1330,7 @@ public class TranslateController extends BaseController {
                 @Override
                 public void onError(Throwable t) {
                     toggleTranslatingDialog(dialogId, false);
-                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_ERROR, getString(t instanceof Http429Exception ? R.string.TranslationFailedAlert1 : R.string.TranslationFailedAlert2));
+                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_ERROR, getString(R.string.TranslationFailedAlert2));
                 }
             });
             return;
